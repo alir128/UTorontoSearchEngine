@@ -1,0 +1,3 @@
+#Sprint1
+
+Unfortunately our burn down chart is a straight line because we we could not finish all the tasks of the user stories. The main reason why we were not able to get all the things done is that we were over-ambitious on what we can do in a week. All of the group members were not very familiar with apache lucene and working with databases which made researching for things very hard. We also had major communications issues, where not everyone agreed on what to do and were unhappy with how the user stories were laid out on JIRA. JIRA was also new to majority of the members and were confused with how the structure should be and how every member must follow a certain format. 

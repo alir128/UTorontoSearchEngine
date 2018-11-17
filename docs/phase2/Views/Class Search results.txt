@@ -1,0 +1,11 @@
+Class name: SearchResultsView
+
+Parent class: ViewHandler
+
+Classname Subclasses: None
+
+Responsibilities: 
+Display the UI for matched results given the search filters and keywords specified
+by the user using the search function
+
+Collaborators: Search Controller

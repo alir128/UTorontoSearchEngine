@@ -1,0 +1,15 @@
+Class name: Auth Controller
+
+Parent class: Main Controller
+
+Classname Subclasses:
+None
+
+Responsibilities:
+
+Allow user to authenticate into the app using his google profile.
+Allow user to authenticate using a local account which they made.
+Check which user is logged in and is requesting something in the view.
+
+Collaborators: 
+Auth Model

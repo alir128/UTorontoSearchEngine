@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{public/publicLayout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Search</title>
+   <!--  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script> -->
+<!--     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ -->    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!-- <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script> -->
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+	<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	
+</head>
+<body>
+
+
+	<section id="newResults" layout:fragment="content">				
+			<div class="container">
+			    <h1>Advanced Search</h1>
+			  	<hr>
+			      <div class="col-md-9 personal-info">
+			        <form action="/advSearch" id="advform" class="form-horizontal" role="form"  method="POST">
+			          <div class="form-group">
+			            <label class="col-lg-3 control-label">Keywords:</label>
+			            <div class="col-lg-8">
+			              <input class="form-control" id="searchBox" type="text" name="text" placeholder="Search file names or keywords">
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-lg-3 control-label">Tags:</label>
+			              <select id="tags" class="selectpicker col-lg-8" title="Choose file tags" data-live-search="true" multiple data-selected-text-format="count > 4">
+							  <option th:each="result: ${tags}">[[${result}]]</option>
+						  </select>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-lg-3 control-label">Groups:</label>
+			            <select id="groups" name="groupCodes" class="selectpicker col-lg-8" title="Enrolled Groups" data-live-search="true" multiple data-selected-text-format="count > 4">
+							<option th:each="result: ${groups}">[[${result}]]</option>  
+						</select>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-lg-3 control-label">Users Type:</label>
+			            <select id="viewtype" name="viewType" class="selectpicker col-lg-8" title="Instructor, Student or public files" data-live-search="true" multiple data-selected-text-format="count > 2">
+							<option>[[${type}]]</option>
+							<option>public</option> 
+						</select>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-lg-3 control-label">File Type:</label>
+			                <div class="col-lg-8">						  
+							  <select id="filetypes" class="form-control js-example-tags" multiple="multiple" title="file types available">
+								  <option th:each="result: ${filetypes}">[[${result}]]</option>
+							  </select>
+						  </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-md-3 control-label" >Users:</label>
+			            <div class="col-md-8">
+			              <input class="form-control" type="text" id="iptUserName" placeholder="e.g. username, username...">
+			            </div>
+			          </div>
+			          <div class="form-group">
+				            <label class="col-md-3 control-label">Date:</label>
+						    <div class='col-md-3'>
+						          <div class="input-group date" data-date-format="dd.mm.yyyy">
+						          	<div class="input-group-addon" >
+						              <span class="glyphicon glyphicon-th"></span>
+						            </div>
+						            <input  type="text" class="form-control" name="date" id="iptFromDate" placeholder="YY-MM-DD">
+						          </div>
+						    </div>
+						    <label class="col-md-2 control-label">Date Until:</label>
+						    <div class='col-md-3'>
+						          <div class="input-group date" data-date-format="dd.mm.yyyy">
+						          	<div class="input-group-addon" >
+						              <span class="glyphicon glyphicon-th"></span>
+						            </div>
+						            <input  type="text" class="form-control" name="date" id="iptToDate" placeholder="YY-MM-DD">
+						          </div>
+						    </div>
+    					</div>
+			          <div class="form-group">
+			            <label class="col-md-3 control-label"></label>
+			            <div class="col-md-8">
+			              <input type="submit" class="btn btn-primary" value="Search">
+			              <span></span>
+			              <input type="reset" class="btn btn-default" value="Reset">
+			            </div>
+			          </div>
+			        </form>
+			        <hr>
+			      </div>
+			      
+			  </div>
+			
+			<script type="text/javascript">
+
+			$(document).ready(function(){
+			      var date_input=$('input[name="date"]'); //our date input has the name "date"
+			      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			      var options={
+			        format: 'yy-mm-dd',
+			        container: container,
+			        todayHighlight: true,
+			        autoclose: true,
+			      };
+			      date_input.datepicker(options);
+			    })
+			</script>
+		<script type="text/javascript">
+
+		var mydata = [];
+		
+		/* $('.js-data-example-ajax').select2({
+			  tags: true
+			  $.ajax: {
+			    url: 'http://localhost:8080/tags/getalltags',
+			    	type: "get",
+					async: false,
+					success : function(retData) {
+						mydata = retData;
+					}
+			    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+			  }
+			}); */
+
+	</script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('.js-example-tags').select2({
+		    	tags: true
+		    });
+		});
+		$(function() {
+			$('#advform').submit(function(e) {
+				e.preventDefault();
+				// Get user's actual searching content
+				var searchContent = $('#searchBox').val();
+
+				// Getting user input from each option
+
+				var filetypes= $('#filetypes').val();
+				if(filetypes){
+					filetypes=filetypes.join(" ");
+				} else {
+					filetypes="";
+				}
+				
+				var viewtype= $('#viewtype').val();
+				if(viewtype){
+					viewtype=viewtype.join(" ");
+				} else {
+					viewtype="";
+				}
+				
+				var fromDate = $('#iptFromDate').val();
+				var toDate = $('#iptToDate').val();
+
+				var tags= $('#tags').val();
+				if(tags){
+					tags=tags.join(" ");
+				} else {
+					tags="";
+				}
+
+				var accessGroup = $('#groups').val();
+				if(accessGroup){
+					accessGroup=accessGroup.join(" ");
+				} else{
+					accessGroup="";
+				}
+				var userName = $('#iptUserName').val();
+
+				// Pack all user input info into a form object
+				var obj = new FormData();
+				obj.append("body", searchContent);
+				obj.append("fileType", filetypes);
+				obj.append("fromDate", fromDate);
+				obj.append("toDate", toDate);
+				obj.append("tags", tags);
+				obj.append("groupCodes",accessGroup);
+				obj.append("viewType",viewtype)
+				obj.append("owner", userName);
+				// Do a post request
+				$.ajax({
+					url : "advSearch", // TODO need to be changed to the actual url that would be used for this post request
+					data : obj,
+					cache : false,
+					contentType : false,
+					processData : false,
+					method : 'POST',
+					success : function(myobj) {
+						$("#newResults").empty();
+						$("#newResults").append(myobj);
+						// replace document
+						/* document.open();
+						document.write(myobj);
+						document.close(); */
+					},
+					error : function(err) {
+						console.log(err);
+					}
+				});
+			});
+		});
+		
+		$("#groups").on('change', function() {
+	    	  if ($(this).val()) {
+	    	    $("#viewtype").attr("disabled", "disabled");
+	    		} else {
+	    	    $("#viewtype").removeAttr("disabled");
+	    		}
+	    });
+		$("#viewtype").on('change', function() {
+	    	  if ($(this).val()) {
+	    	    $("#groups").attr("disabled", "disabled");
+	    		} else {
+	    	    $("#groups").removeAttr("disabled");
+	    		}
+	    });
+	</script>
+		</section>
+	</body>
+	
+</html>

@@ -1,0 +1,13 @@
+Class name: homepage View
+
+Parent cloass: ViewHandler
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Display sign in and sign up buttons to the user for creating account or logging in.
+Display the search bar to the user for querying public files.
+
+Collaborators:
+Search Controller

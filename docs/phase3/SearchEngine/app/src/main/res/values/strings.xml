@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Search Engine</string>
+
+    <!-- text view values -->
+    <string name="adv_search_title">Advanced Search</string>
+    <string name="adv_search_file_type_title">File Type:</string>
+    <string name="adv_search_tag_title">Tag: </string>
+    <string name="adv_search_access_group_title">Access Group: </string>
+
+    <!-- edit text hint values -->
+    <string name="adv_search_edit_hint">Please enter Keywords...</string>
+
+    <!-- button text values -->
+    <string name="adv_search_button">Search</string>
+
+    <!-- spinner values -->
+    <string-array name="adv_search_file_type_values">
+        <item>.txt</item>
+        <item>.html</item>
+        <item>.pdf</item>
+        <item>.java</item>
+        <item>.c</item>
+    </string-array>
+
+    <string-array name="test_adv_search_tag_values">
+        <item>test_tag1</item>
+        <item>test_tag2</item>
+        <item>test_tag3</item>
+        <item>test_tag4</item>
+        <item>test_tag5</item>
+    </string-array>
+
+</resources>

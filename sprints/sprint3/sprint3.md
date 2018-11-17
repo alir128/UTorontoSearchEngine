@@ -1,0 +1,3 @@
+#Sprint3
+
+We finished all the user stories in Sprint 2.  For Sprint 3, we distributed 3 user stories among the  five members in the team. In this Sprint, we went through all of our subtasks smoothly due to the fact that we are now familiar with working in a team and communicating with each other. We mainly worked on optimizing basic search, advanced search, basic User Account creation and storing them on our DB (with authorization and authentication), and also implemented UI for user signup and login. Usually, we communicated every day and had a meeting on the  last day of the Sprint in order to check each task's quality and then mark them as DONE in JIRA. In addition, we planned the next sprint's content and each team member got his/her own work properly.

@@ -1,0 +1,14 @@
+Class name: Profile View
+
+Parent class: Views
+
+Classname Subclasses:
+Personal Profile
+Different Users Profile
+
+Responsibilities:
+Display your own personal profile and allow edit options.
+Display another users profile.
+
+Collaborators: 
+Profile Controller

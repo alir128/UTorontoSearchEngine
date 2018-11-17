@@ -1,0 +1,11 @@
+Class name: Main
+
+Parent class: None
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Initiate the server and allow the model class to have access to the db.
+
+Collaborators: None

@@ -1,0 +1,12 @@
+Class name: Different users profile
+
+Parent class: Profile View
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Display another users profile.
+
+Collaborators: 
+Profile Controller

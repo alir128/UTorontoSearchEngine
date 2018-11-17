@@ -1,0 +1,15 @@
+Class name: Search View
+
+Parent class: Views
+
+Classname Subclasses:
+Advanced search
+Search results
+
+Responsibilities:
+Display the search results in public search view, advanced search view, private files search view and allow advanced search view with filters to be displayed by calling the appropriate class.
+Display results according to rankings.
+
+Collaborators: 
+Auth controller
+Search controller

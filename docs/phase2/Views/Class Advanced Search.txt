@@ -1,0 +1,11 @@
+Class Name: AdvanceSearchView
+
+Parent Class: ViewHandler
+
+Classname Subclasses: None
+
+Responsibilities:
+Display the UI for an advanced search where users can add filters
+to minimize their search results to more specific items they’re looking for
+
+Collaborators: Search Controller

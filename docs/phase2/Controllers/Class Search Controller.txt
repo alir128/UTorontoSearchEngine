@@ -1,0 +1,13 @@
+Class name: Search Controller
+
+Parent class: Main Controller
+
+Classname Subclasses:
+None
+
+Responsibilities:
+
+Allow user to search files and also send the model with the filtering params when doing a search query.
+
+Collaborators: 
+Search Model

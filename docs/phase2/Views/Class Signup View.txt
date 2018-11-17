@@ -1,0 +1,14 @@
+Class name: Signup View
+
+Parent class: ViewHandler
+
+Classname Subclasses: None
+
+Responsibilities: 
+Asks users for their name, username, email, and password.
+Talks to the Profile Controller to create the user in the database.
+Redirects to the Personal Profile page right after.
+
+Collaborators: 
+Auth Controller
+Profile Controller

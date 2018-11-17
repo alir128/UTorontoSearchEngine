@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="http://localhost:8888/WebFeatures/testingFunctions.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/WebFeatures/testingComponents.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+	<!-- <button id="sendEmailBtn" onclick="sendEmail()"><i class="fa fa-envelope"></i></button> -->
+
+	<div class="share">
+		
+		<div class="toggle"></div>
+
+		<ul class="">
+			<!-- No need for change this one, since the js method takes care of inserting the current href -->
+			<li><a href="#" onclick="sendEmail()"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+
+			<!-- Replace google part in href with actual current href (since facebook didn't support localhost for now) -->
+			<li><a id="fbShare" href="http://facebook.com/sharer.php?u=http%3A%2F%2Fwww.google.com" target="_blank" rel="nofllow"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+			<!-- for sharing by twitter and google plus, localhost part of href should be replaced by the current href -->
+			<li><a id="twShare" href="http://twitter.com/share?text=This+is+a+useful+file&url=http%3A%2F%2Flocalhost:8888/WebFeatures/testingComponents.html#" target="_blank" rel="nofllow"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+
+			<li><a id="gpShare" href="http://plus.google.com/share?text=This+is+a+useful+file+%3A+http%3A%2F%2Flocalhost:8888/WebFeatures/testingComponents.html#" target="_blank" rel="nofllow"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+		</ul>
+
+
+
+	</div>
+
+	<!-- This part takes care of the share button in both active and non-active status -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.toggle').click(function(){
+				$('.toggle').toggleClass('active')
+				$('ul').toggleClass('active')
+			})
+		})
+	</script>
+
+</body>
+</html>

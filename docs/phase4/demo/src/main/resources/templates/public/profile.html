@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{public/publicLayout.html}">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-122960073-1');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      var request = new XMLHttpRequest();
+      request.responseType = 'json';
+      request.onreadystatechange = function() {
+        if (request.readyState === 4 && request.status === 200) {
+          var jsonResponse = request.response;
+
+          var jsonDataFormatted = [];
+          for (var i in jsonResponse) {
+            jsonDataFormatted.push([i, jsonResponse[i]]);
+          }
+
+          data.addColumn('string', 'File Types');
+          data.addColumn('number', 'Number of Files');
+          data.addRows(jsonDataFormatted);
+
+          var options = {
+            'title': 'File types You Have Uploaded',
+            'width': 400,
+            'height': 300
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+        }
+      }
+      request.open("GET", "http://localhost:8080/users/getallfiletypes", true);
+      request.send(null);
+
+    }
+  </script>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+
+  <section layout:fragment="content">
+    <div class="container">
+      <div data-th-if="${successMessage}" class="alert alert-success">
+        <strong>[[${successMessage}]]</strong>
+      </div>
+      <div id="failure" class="alert alert-danger">
+		</div>
+      <h1>Edit Profile</h1>
+      <hr>
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-3">
+          <div class="text-center">
+            <h4>Files Uploaded</h4>
+            <div id="chart_div" class="col-md-3"></div>
+          </div>
+        </div>
+
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+          <!-- <div class="alert alert-info alert-dismissable">
+			          <a class="panel-close close" data-dismiss="alert">×</a>
+			          <i class="fa fa-coffee"></i>
+			          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+			        </div> -->
+          <h3>Personal info</h3>
+
+          <form action="/profile" class="form-horizontal" role="form" method="POST">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">First name:</label>
+              <div class="col-lg-8">
+                <input class="form-control" type="text" name="FirstName" th:value="${#authentication.getPrincipal().getFirstName()}" value="Jane">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Last name:</label>
+              <div class="col-lg-8">
+                <input class="form-control" type="text" name="LastName" th:value="${#authentication.getPrincipal().getLastName()}" value="Bishop">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Full Name:</label>
+              <div class="col-lg-8">
+                <input class="form-control" type="text" name="fullname" th:value="${#authentication.getPrincipal().getFullName()}" value="Jane">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Role:</label>
+              <div class="col-lg-8">
+                <input readonly class="form-control" type="text" th:value="${#authentication.getPrincipal().getType()}" value="Instructor">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Groups:</label>
+              <select class="selectpicker col-lg-8" title="View Groups Enrolled" multiple data-selected-text-format="count > 4">
+			              	<optgroup label="enrolled" disabled>
+							  <option th:each="result: ${groups}">[[${result}]]</option>
+							</optgroup>
+							<optgroup  label="enroll?" data-size="5">
+
+							</optgroup>
+
+						  </select>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Email:</label>
+              <div class="col-lg-8">
+                <input readonly class="form-control" type="text" th:value="${#authentication.getPrincipal().getEmail()}" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Username:</label>
+              <div class="col-md-8">
+                <input readonly class="form-control" type="text" name="username" th:value="${#authentication.getPrincipal().getUsername()}" value="janeuser">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Password:</label>
+              <div class="col-md-8">
+                <input class="form-control" name="password" type="password" value="null">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <input type="submit" class="btn btn-primary" value="Save Changes">
+                <span></span>
+                <input type="reset" class="btn btn-default" value="Cancel">
+              </div>
+            </div>
+          </form>
+          <form action="/addGroup" class="form-horizontal" role="form" method="POST">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Enroll into a group:</label>
+              <div class="col-lg-8">
+                <select name="groupCode" class="form-control js-example-tags">
+					<option th:each="result: ${instgroups}" >[[${result.code}]]</option>
+				</select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <input type="submit" class="btn btn-primary" value="Enroll">
+                <span></span>
+                <input type="reset" class="btn btn-default" value="Cancel">
+              </div>
+            </div>
+          </form>
+          <form action="/groups/addUsers" class="form-horizontal" role="form" method="POST" id="adduserform">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Add Users:</label>
+              <select name="groupCode" class="selectpicker col-lg-8" title="Select a Group" data-live-search="true">
+									<option th:each="result: ${groups}" >[[${result}]]</option>
+							    </select>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Search Users:</label>
+              <select name="usersToAdd" class="selectpicker col-lg-8 " title="Select Users " data-live-search="true " multiple data-selected-text-format="count> 4">
+			  		<option th:each="result: ${allUsers}" th:value="${result.email}">[[${result.fullname}]] ( [[${result.email}]] )</option>
+			  </select>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <input type="submit" formaction="/groups/addAdmins" class="btn btn-default" value="Add Admins">
+                <span></span>
+                <input type="submit" formaction="/groups/addUsers" class="btn btn-default" value="Add Users">
+              </div>
+            </div>
+          </form>
+          <form action="/group" class="form-horizontal" role="form" method="GET" id="groupform">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">View Groups:</label>
+              <select name="groupCode" class="selectpicker col-lg-8" title="Select a Group" data-live-search="true">
+									<option th:each="result: ${groups}" >[[${result}]]</option>
+							    </select>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <input type="submit" class="btn btn-default" value="View Group">
+              </div>
+            </div>
+          </form>
+          <form action="/viewfile" class="form-horizontal" role="form" method="GET" id="fileform">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">View Files Uploaded:</label>
+              <select name="id" class="selectpicker col-lg-8" title="Select a File" data-live-search="true">
+					<option th:each="result: ${files}" th:value="${result.id}">[[${result.fileName}]]</option>
+			  </select>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <input type="submit" class="btn btn-default" value="View File">
+                <input type="submit" formaction="/showSaved" formmethod="POST" class="btn btn-default" value="View Saved Files">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+      $(document).ready(function() {
+    	  $("#failure").hide();
+        $('.js-example-tags').select2({
+          tags: true
+          /* data: theList */
+        });
+        $("#fileform input[value='View File']").on("click", function(e) {
+        	$(".alert").hide();
+        	e.preventDefault();
+        	if($("#fileform select[name='id']").val()===""){
+        		$("#failure").show();
+        		$("#failure").empty();
+        		var message = "<strong>Please select file before submitting</strong>";
+        		$("#failure").append(message);
+        	} else {
+        		$("#fileform").submit();
+        	}
+            
+        });
+        $("#groupform input[value='View Group']").on("click", function(e) {
+        	$(".alert").hide();
+        	e.preventDefault();
+        	if($("#groupform select[name='groupCode']").val()===""){
+        		$("#failure").show();
+        		$("#failure").empty();
+        		var message = "<strong>Please select group before submitting.</strong>";
+        		$("#failure").append(message);
+        	} else {
+        		$("#groupform").submit();
+        	}
+            
+        });
+        $("#adduserform").submit(function(e) {
+        	$(".alert").hide();
+        	e.preventDefault();
+        	if($("#adduserform select[name='groupCode']").val()===""){
+        		$("#failure").show();
+        		$("#failure").empty();
+        		var message = "<strong>Please select group before adding user.</strong>";
+        		$("#failure").append(message);
+        		return;
+        	}
+        	if($("#adduserform select[name='usersToAdd']").val()==null){
+        		$("#failure").show();
+        		$("#failure").empty();
+        		var message = "<strong>Please select users before submitting.</strong>";
+        		$("#failure").append(message);
+        		return;
+        	}
+        	$('#adduserform').unbind('submit').submit();
+     	   	$("#adduserform").submit();
+            
+        });
+      });
+    </script>
+  </section>
+</body>
+
+</html>

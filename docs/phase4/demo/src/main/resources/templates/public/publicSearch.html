@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{public/publicLayout.html}">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122960073-1');
+</script>
+
+<meta charset="UTF-8">
+<title>Public Search</title>
+<link rel="stylesheet" href="/css/search.css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<div class="container">
+			<header class="jumbotron vertical-center">
+				<div class="container">
+					<h1>Public Search!</h1>
+
+
+					<p>View file search results.</p>
+
+					<p>
+					<form action="/search" method="post" class="form-inline"
+						id="searchQuery">
+						<div class="input-group">
+							<input type="text" name="searchQuery"
+								placeholder="Search files..." class="form-control">
+						</div>
+					</form>
+					</p>
+				</div>
+		</header>
+
+		</div>
+	</section>
+
+</body>
+</html>

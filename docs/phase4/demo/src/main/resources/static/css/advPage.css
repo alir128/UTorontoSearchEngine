@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(../img/advPageBg7.jpg);
+  background-size: cover;
+  font-family:'Rubik';
+}
+
+div, ul, li, label {
+  /* border: 1px #ccc solid; */
+  padding: 10px;
+}
+
+li {
+  overflow: hidden;
+  list-style: none;
+}
+
+a {
+  font-weight: bold;
+}
+
+i {
+  color: #999999;
+}
+
+i:hover {
+  color: #000000;
+}
+
+input[type='text'] {
+  width: 100%;
+  height: 100%;
+  border: hidden;
+  outline: none;
+  font-size: 20px;
+  font-family: 'Rubik';
+  color: #fff;
+  background-color: #828caa;
+  border-radius: 20px;
+  direction: lrt;
+  /* text-align: center; */
+}
+
+input[type='checkbox'] {
+  zoom: 1.2;
+}
+
+label {
+  font-size: 18px;
+  margin-left: 5%;
+}
+
+::placeholder {
+  color: #d9d9d9;
+}
+
+.mainPart {
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  width: 50%;
+  background-color: #fff;
+  opacity: 0.7;
+  border-radius: 15px;
+}
+
+.searchLineContainer {
+  display: flex;
+}
+
+.searchBox {
+  flex: 15;
+  height: 45px;
+}
+
+.searchButton {
+  flex: 1;
+  text-align: center;
+  font-size: 40px;
+}
+
+.advOptionsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.fileType, .tags, .accessGroup, .userName, .date {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fileTypeHeader:hover, .tagsHeader:hover, .accessGroupHeader:hover, .userNameHeader:hover, .dateHeader:hover {
+  cursor: pointer;
+}
+
+@keyframes dropDownDisplay {
+  0% {
+    opacity: 0;
+    transform: rotateY(-90deg) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg) translateY(0px);
+  }
+}
+
+.fileType .hide {
+  display: none;
+}
+
+.fileType.active > .hide {
+  display: block;
+}
+
+.fileType.active > .fileType {
+  perspective: 1000px;
+}
+
+.fileType.active li:nth-child(2) {
+  animation-name: dropDownDisplay;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.fileType.active li:nth-child(3) {
+  animation-name: dropDownDisplay;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.fileType.active li:nth-child(4) {
+  animation-name: dropDownDisplay;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.fileType.active li:nth-child(5) {
+  animation-name: dropDownDisplay;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.fileType.active li:nth-child(6) {
+  animation-name: dropDownDisplay;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.date .hide {
+  display: none;
+}
+
+.date.active .hide {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.date.active .hide input[type='text'] {
+  height: 30px;
+  font-size: 20px;
+}
+
+.date.active > .date {
+  perspective: 1000px;
+}
+
+.date.active li:nth-child(2) {
+  animation-name: dropDownDisplay;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.date.active li:nth-child(3) {
+  animation-name: dropDownDisplay;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.tags .hide {
+  display: none;
+}
+
+.tags.active .hide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tags.active .hide input[type='text'] {
+  height: 46px;
+  font-size: 20px;
+}
+
+.accessGroup .hide {
+  display: none;
+}
+
+.accessGroup.active .hide {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName .hide {
+  display: none;
+}
+
+.userName.active .hide {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* datepicker customization */
+.ui-datepicker-calendar{
+    background: hsla(0, 0%, 0%, 0.95);
+}
+
+.ui-datepicker-calendar th{
+    padding: 5px 10px;
+    color: #fff;
+}
+.ui-datepicker-calendar td{
+    width: 50px;
+    height: 30px;
+}
+
+.ui-datepicker-title{
+    background: hsla(0, 0%, 0%, 0.80);
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+.ui-datepicker-calendar td a{
+    padding: 10px;
+    color: #e5e6e7;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.ui-datepicker-calendar td a:hover{
+    background: #828caa;
+    color: #fff;
+}
+
+.ui-datepicker-prev{
+    float: left;
+    padding: 10px;
+    color: #fff;
+}
+.ui-datepicker-prev span{cursor: pointer;}.ui-datepicker-next span{cursor: pointer}
+
+.ui-datepicker-next{
+    float: right;
+    padding: 10px;
+    color: #fff;
+}

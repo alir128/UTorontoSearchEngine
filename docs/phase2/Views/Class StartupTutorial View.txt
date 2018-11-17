@@ -1,0 +1,12 @@
+Class name: Startup Tutorial View
+
+Parent class: None
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Display a brief tutorial for the user on how to use the app, including sign up page, search page and how to upload files.
+
+Collaborators: 
+None

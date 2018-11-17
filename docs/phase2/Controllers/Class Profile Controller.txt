@@ -1,0 +1,15 @@
+Class name: Profile Controller
+
+Parent class: Main Controller
+
+Classname Subclasses:
+None
+
+Responsibilities:
+
+Allow user to load his profile.
+Allow a user to create a new profile.
+Allow a user to edit his profile.
+
+Collaborators: 
+Profile Model

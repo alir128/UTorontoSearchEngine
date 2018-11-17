@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{public/publicLayout.html}">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122960073-1');
+</script>
+
+    <meta charset="UTF-8">
+    <title>Public Search Results</title>
+    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
+
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<link rel="stylesheet" href="/css/comments.css">
+</head>
+<body>
+
+<section layout:fragment="content">
+	<div class ="container">
+		<form action="/search" method="post" id="searchQuery">
+        	<div class="input-group">
+            	<input type="text" name="searchQuery" placeholder="Search files..." class="form-control">
+            </div>
+        </form>
+
+	</div>
+    <div class="container">
+
+    <hgroup class="mb20">
+		<h1><a th:href="@{/file?(id=${resultObject.getId()})}" th:text="${resultObject.getTitle()}"></a></h1>
+		
+	</hgroup>
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+		<article class="row">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+
+				<p th:text="${resultObject.getContent()}">Lorem ipsum.</p>
+			</div>
+			<span class="clearfix borda"></span>
+		</article>
+
+
+
+	</section>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+			<span class="plus"><i class="glyphicon glyphicon-calendar"></i> <span th:inline="text">[[${resultObject.getDate()}]]  </span><i class="glyphicon glyphicon-time"></i> 
+			<span th:inline="text">[[${resultObject.getTime()}]]  </span><span th:inline="text">  <i class="glyphicon glyphicon-user"></i> [[${resultObject.getOwner()}]]</span></span>
+			<span></span>
+			</div>
+		
+		</div>
+	</div>
+	<div class="container" id="feedback"></div>
+	<div class="container">
+	  <div class="row">
+	    <div class="col-sm-10 col-sm-offset-1" id="logout">
+	        <div class="page-header">
+	            <h3 class="reviews">Discussion</h3>
+	        </div>
+	        <div class="comment-tabs">
+	            <ul class="nav nav-tabs" role="tablist">
+	                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+	                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+	            </ul>            
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="comments-logout">
+	                	<button class="btn btn-success btn-circle text-uppercase" type="submit" id="ViewComments"><span class="glyphicon glyphicon-refresh"></span> View Comments</button>
+	                	<ul class="media-list">
+	                	</ul>
+	                </div>
+	                <div class="tab-pane" id="add-comment">
+	                    <form th:action="@{/save/}+ ${resultObject.id}" action="/" method="post" class="form-horizontal" id="commentForm" role="form">
+	                        <div class="form-group">
+	                            <label for="email" class="col-sm-2 control-label">Comment</label>
+	                            <div class="col-sm-10">
+	                              <textarea class="form-control" name="content" id="addComment" rows="5"></textarea>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <div class="col-sm-offset-2 col-sm-10">
+	                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+	                            </div>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+	  </div>
+	</div>
+	</section>
+
+</body>

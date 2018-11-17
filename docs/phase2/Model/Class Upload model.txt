@@ -1,0 +1,13 @@
+Class name: Upload Model
+
+Parent class: Model
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Provide the upload controller its functionality to communicate with the db.
+
+Add new files to the db with the given permissions specified by the user uploading the file.
+
+Collaborators: None

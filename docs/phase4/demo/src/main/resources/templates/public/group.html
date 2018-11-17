@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{public/publicLayout.html}">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+	<title>Group</title>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-122960073-1');
+	</script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+ 	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	<link rel="stylesheet" href="/css/comments.css">
+	<script type="text/javascript" src="js/groupDiscussion.js"></script>
+</head>
+<body>
+	<section layout:fragment="content">
+			<div class ="container">
+				<form action="/search" method="post" id="searchQuery">
+		        	<div class="input-group">
+		            	<input type="text" name="searchQuery" placeholder="Search files..." class="form-control">
+		            </div>
+		        </form>
+		
+			</div>
+			<div class="container">
+				<div data-th-if="${successMessage}"class="alert alert-success">
+				  <strong>[[${successMessage}]]</strong>
+				</div>
+			    <h1>[[${groupinfo.name}]]</h1>
+			    <h3>[[${groupinfo.code}]]</h3>
+			  	<hr>
+			  	<div class="row">
+			  	<div class="col-sm-10 col-sm-offset-1" id="logout">
+			  	<div class="panel panel-default">
+			        <div class="panel-body">
+			          <h4>Group Info</h4>
+			          <div class="row">
+			          <form action="/groups/addUsers" class="form-horizontal" role="form"  method="POST">
+			          	<div class="form-inline my-8">
+					            <!-- <label class="col-lg-2 control-label">Add Users:</label> -->
+					            
+								    <select name="usersToAdd" class="selectpicker col-lg-3" title="Users" data-live-search="true" multiple data-selected-text-format="count > 4">
+								    <optgroup label="enroll">
+										<option th:each="result: ${allUsers}" th:value="${result.email}">[[${result.fullname}]] ( [[${result.email}]] )</option>
+									</optgroup>
+									<optgroup  label="enrolled Users" disabled>
+										<option th:each="result: ${users}">[[${result.fullname}]] ( [[${result.email}]] )</option>
+									</optgroup>
+									<optgroup  label="enrolled Admins" disabled>
+										<option th:each="result: ${admins}">[[${result.fullname}]] ( [[${result.email}]] )</option>
+									</optgroup>
+									</select>
+									<input name="groupCode" class="btn btn-default" th:value="${groupinfo.code}" type="hidden">
+					        
+				            <div class="form-group offset-3">
+				              	<button type="submit" formaction="/groups/addAdmins" class="btn btn-sm btn-default" value="Add Admins">Add Admins</button>
+				              	<button type="submit" formaction="/groups/addUsers" class="btn btn-sm btn-default" value="Add Users">Add Users</button>
+				            </div>
+				            <!-- <label class="col-lg-2 control-label">View Files:</label> -->
+				                <select name="id" class="selectpicker col-lg-3" title="View Group Files" data-live-search="true">
+									<option th:each="result: ${files}" th:value="${result.id}" >[[${result.fileName}]]</option>
+							    </select>
+				            <div class="form-group offset-3">
+				              <button type="submit" formaction="/viewfile" formmethod="GET" class="btn btn-sm btn-default" value="View">View</button>
+				            </div>
+						</div>
+			        </form>
+			        </div>
+			        <span></span>
+			        <div class="row">
+			        <form action="/viewfile" class="form-horizontal" role="form"  method="GET">
+				        <div class="form-inline my-8">
+				            
+			          </div>
+			        </form>
+			        </div>
+			        </div>
+			    </div>  
+			    </div>
+			    </div>
+			</div>
+			<div class="container">
+			  <div class="row">
+			    <div class="col-sm-10 col-sm-offset-1" id="logout">
+			        <div class="page-header">
+			            <h3 class="reviews">Discussion</h3>
+			        </div>
+			        <div class="comment-tabs">
+			            <ul class="nav nav-tabs" role="tablist">
+			                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Messages</h4></a></li>
+			                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add Message</h4></a></li>
+			            </ul>            
+			            <div class="tab-content">
+			                <div class="tab-pane active" id="comments-logout">
+			                	<button class="btn btn-success btn-circle text-uppercase" type="submit" id="ViewComments"><span class="glyphicon glyphicon-refresh"></span> Reload Messages</button>
+			                	<ul class="media-list">
+			                	</ul>
+			                </div>
+			                <div class="tab-pane" id="add-comment">
+			                    <form th:action="@{/saveGroup/}+ ${groupinfo.id}" action="/" method="post" class="form-horizontal" id="commentForm" role="form">
+			                        <div class="form-group">
+			                            <label for="email" class="col-sm-2 control-label">Comment</label>
+			                            <div class="col-sm-10">
+			                              <textarea class="form-control" name="content" id="addComment" rows="5"></textarea>
+			                            </div>
+			                        </div>
+			                        <div class="form-group">
+			                            <div class="col-sm-offset-2 col-sm-10">
+			                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+			                            </div>
+			                        </div>
+			                    </form>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+			  </div>
+			</div>
+		</section>
+	</body>
+</html>

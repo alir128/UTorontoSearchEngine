@@ -1,0 +1,116 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+.thumbnail img {
+    width: 100%;
+}
+body {
+	font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.navbar.navbar-primary.navbar-fixed-top {
+	background-color: rgba(0, 38, 81, 0.9);
+	color: white;
+
+}
+background-color: rgba(51, 51, 51, 0.9);
+.thumbnail {
+    padding:0;
+}
+.icon-bar {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+.navlink {
+	color: #fdfdfd;
+}
+.thumbnail .caption-full {
+    padding: 9px;
+} 
+#username {
+    text-transform: capitalize;
+}
+.del-form {
+    display: inline;
+}
+body {
+    
+    padding-top: 70px;
+    margin-bottom: 20px;
+
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+}
+
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
+glyphicons-tent {
+    top:20px;
+}
+
+.input-group {
+    width: 100%;
+}
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+.search-result.row {
+	margin-top: -300px;
+	padding-left: 75px;
+}
+.col-sm-6.search-result.row {
+	padding-top: 400px;
+}
+@media only screen and (max-width: 993px) {
+	#chart_div  {
+	padding-bottom: 240px;
+}
+}
+
+.navbar-custom .navbar-toggle {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 1);
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-size: 12px;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.69);
+  color: #333;
+}
+.navbar-custom .nav li a {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: white;
+}

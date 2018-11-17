@@ -1,0 +1,13 @@
+Class name: Upload View
+
+Parent class: Views
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Display upload page to the user where they can specify file permissions.
+Display permissions to which users they want the file visible to, or if they want it viewable in public search results.
+
+Collaborators:
+Upload Controller

@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="/css/main.css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+	var fileSearchStats = /*[[${stats}]]*/ null;
+	google.charts.load('current', {
+		'packages': ['corechart']
+	});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+
+		var data = new google.visualization.DataTable();
+
+		var jsonDataFormatted = [];
+		for (var i in fileSearchStats['filetypes']) {
+			jsonDataFormatted.push([i, fileSearchStats['filetypes'][i]]);
+		}
+
+		data.addColumn('string', 'File Types');
+		data.addColumn('number', 'Number of Files');
+		data.addRows(jsonDataFormatted);
+
+		var options = {
+			'title': 'File Distributions',
+			'width': 400,
+			'height': 300
+		};
+
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		chart.draw(data, options);
+	}
+	/*]]>*/
+</script>
+
+<div class="container">
+	<form action="/searchajax" method="post" id="searchQuery">
+		<div class="input-group">
+			<input id="searchBox" type="text" name="searchQuery" placeholder="Search files..." class="form-control">
+		</div>
+	</form>
+
+</div>
+<div id="resultsSection" class="container">
+	<hgroup class="mb20">
+		<h1>Search Results</h1>
+		<h2 class="lead" th:inline="text" query=""><strong th:text="${resultObjects.size()}"class="text-danger">0</strong> results were found for the search.</h2>
+	</hgroup>
+	<div class="row">
+		<div id="chart_div" class="col-md-3"></div>
+	</div>
+	<section class="col-xs-12 col-sm-6 col-md-12">
+
+		<article class="search-result row" th:each="result: ${resultObjects}">
+			<div class="col-xs-12 col-sm-12 col-md-3"></div>
+			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+				<h3><a th:href="@{/viewfile?(id=${result.id})}" href="/" th:inline="text" title="">[[${result.title}]]</a></h3>
+				<p th:utext="${result.content}"></p>
+				<span class="plus"><a th:href="@{/file?(id=${result.id})}" href="/" title="Lorem ipsum"><i class="glyphicon glyphicon-save"></i>  </a><i class="glyphicon glyphicon-calendar"></i> <span th:inline="text">[[${result.date}]]  </span><i class="glyphicon glyphicon-time"></i>				<span th:inline="text">[[${result.time}]]  </span><span th:inline="text">  <i class="glyphicon glyphicon-user"></i> [[${result.owner}]]</span></span>
+			</div>
+			<span class="clearfix borda"></span>
+		</article>
+	</section>
+</div>
+<script type="text/javascript" src="js/results.js"></script>

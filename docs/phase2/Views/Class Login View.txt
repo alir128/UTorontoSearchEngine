@@ -1,0 +1,12 @@
+Class name: LoginView
+
+Parent class: ViewHandler
+
+Classname Subclasses: None
+
+Responsibilities: 
+Displays username and password fields. 
+Displays a "forgot the password" link that can be used to reset the password.
+Displays the login button.
+
+Collaborators: Auth Controller

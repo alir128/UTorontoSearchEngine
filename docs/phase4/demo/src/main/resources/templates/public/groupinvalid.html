@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{public/publicLayout.html}">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+	<title>Group</title>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-122960073-1');
+	</script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+ 	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	<link rel="stylesheet" href="/css/comments.css">
+	<script type="text/javascript" src="js/groupDiscussion.js"></script>
+</head>
+<body>
+	<section layout:fragment="content">
+			<div class ="container">
+				<form action="/search" method="post" id="searchQuery">
+		        	<div class="input-group">
+		            	<input type="text" name="searchQuery" placeholder="Search files..." class="form-control">
+		            </div>
+		        </form>
+		
+			</div>
+			<div class="container">
+				<div data-th-if="${successMessage}"class="alert alert-danger">
+				  <strong>[[${successMessage}]]</strong>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

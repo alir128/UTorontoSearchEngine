@@ -1,0 +1,131 @@
+body {
+  background-color: #000;
+}
+
+h1 {
+  font-size: 4em;
+  text-shadow: 2px 2px 10px black;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://www.prodema.com/uploads/proyectos/completas/1378115379.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://boundless.utoronto.ca/assets/Krembil-UTSC-gift_story-13.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://urbantoronto.ca/sites/default/files/images/projects/6977/6977-90094.jpeg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://s3.amazonaws.com/btoimage/prism-thumbnails/articles/20180313-u-toronto-ranking.jpg-resize_then_crop-_frame_bg_color_FFF-h_1365-gravity_center-q_70-preserve_ratio_true-w_2048_.webp);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://cdnarchitect.s3.amazonaws.com/wp-content/uploads/2016/02/U-of-T-Scarborough-Environmental-Science-and-Chemistry-Building-Photo-Michael-Muraz.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+}
+
+.form-control-borderless {
+    border: none;
+   	
+}
+#searchinput {
+	background-color: rgba(245, 245, 245, 0.8);
+	color: black;
+	font-size: 16px;
+}
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#searchbar {
+	background-color: rgba(245, 245, 245, 0.0);
+	border-radius: 0.0rem;
+	border: 0px solid rgba(0,0,0,0);
+}
+
+/* .navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+} */
+
+.navbar li { color: #000 } 
+
+.navbar.navbar-inverse.navbar-fixed-top {
+	z-index: 10;
+	background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}

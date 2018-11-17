@@ -1,0 +1,23 @@
+Class name: Views
+
+Parent class: None
+
+Classname Subclasses:
+Search View
+Upload View
+HelpSection View
+Profile View
+Login View
+SignUp View
+Homepage View
+
+Responsibilities:
+Provide data to be sent to controller for handling and display data to the user.
+
+Display the search results in public search view, advanced search view, private files search.
+Display the user profile of another user or their own.
+Display upload page to the user where they can specify file permissions.
+Display login/signup page to the user.
+Display help section and Tutorial when the user opens the app.
+
+Collaborators: None

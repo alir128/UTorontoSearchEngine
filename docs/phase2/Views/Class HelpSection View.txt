@@ -1,0 +1,12 @@
+Class name: HelpSection View
+
+Parent class: Views
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Display the help section of the app.
+Call the Start Tutorial when the app is loaded.
+
+Collaborators: 

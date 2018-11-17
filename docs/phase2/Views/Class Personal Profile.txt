@@ -1,0 +1,13 @@
+Class name: Profile View
+
+Parent class: Personal Profile
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Display your own personal profile and allow edit options to certain fields if logged in.
+
+Collaborators: 
+Profile Controller
+Auth Controller

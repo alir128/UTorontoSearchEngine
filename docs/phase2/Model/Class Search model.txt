@@ -1,0 +1,11 @@
+Class name: Search Model
+
+Parent class: Model
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Provide the search controller its functionality to communicate with the db to pull search results and provide filtering functions.
+
+Collaborators: None

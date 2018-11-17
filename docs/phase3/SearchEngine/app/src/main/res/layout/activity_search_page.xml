@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0px"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:iconifiedByDefault="false"
+        android:inputType="textFilter"
+        android:queryHint="Type Search Content"
+        app:layout_constraintBottom_toTopOf="@+id/listView"></SearchView>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="392dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:text="LOG IN"
+
+        android:onClick="loginClicked"/>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="SIGN UP"
+        app:layout_constraintStart_toEndOf="@id/button"
+
+        android:id="@+id/sign_up_button"
+        android:onClick="signUpClicked"/>
+
+    <!--Added by Alan, can be deleted or modified later-->
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adv_search_button"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="searchClicked"
+        app:layout_constraintStart_toEndOf="@id/searchView"/>
+    <Button
+        android:id="@+id/adv_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="ADV SEARCH"
+        android:onClick="advSearchClicked"
+        app:layout_constraintEnd_toStartOf="@id/search_button"/>
+    <!--***********************************************-->
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,13 @@
+Class name: Auth Model
+
+Parent class: Model
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Provide the auth controller its functionality to communicate with the db.
+
+Add new user, edit a user, delete a user, and pull a users information.
+
+Collaborators: None

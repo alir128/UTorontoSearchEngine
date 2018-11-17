@@ -1,0 +1,19 @@
+Class name: Model
+
+Parent class: None
+
+Classname Subclasses:
+Profile model
+Upload model
+Search model
+Auth model
+
+Responsibilities:
+Provide functional core of the app.
+
+Process all search queries made by a user and send back to the controller to be sent back to the appropriate view of the user which requested the data.
+Place files uploaded in the correct location on the db with permissions set.
+Allow for user profiles to be created edited and deleted by profile model.
+
+Collaborators: 
+Class Main

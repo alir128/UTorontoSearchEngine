@@ -1,0 +1,11 @@
+Class name:Profile Model
+
+Parent class: Model
+
+Classname Subclasses:
+None
+
+Responsibilities:
+Provides the profile controller functionality to pull a user profile from the DB.
+
+Collaborators: None

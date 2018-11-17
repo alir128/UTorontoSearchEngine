@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122960073-1');
+</script>
+
+<title>Advanced Search Page</title>
+<link rel="stylesheet" type="text/css" href="css/advPage.css">
+<!-- icon source -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- font source -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Rubik" />
+<!-- date related source -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- autofill & tokeninput(tags) related source -->
+<link rel="stylesheet" type="text/css" href="css/tags.css" />
+<script type="text/javascript" src="js/tags.js"></script>
+<script type="text/javascript" src="js/autofill.js"></script>
+</head>
+
+
+
+<body>
+
+	<div class="mainPart">
+		<div class="searchLineContainer">
+
+			<div class="searchBox">
+				<input type="text" placeholder="Search......." />
+			</div>
+
+			<div class="searchButton">
+				<a href="#" onclick=""><i class="fa fa-search"></i></a>
+				<!-- TODO change the href to the result showing page -->
+			</div>
+
+		</div>
+
+		<div class="advOptionsContainer">
+			<ul class="fileType">
+				<li class="fileTypeHeader"><a id="aFileType">File Type</a></li>
+
+				<li class="hide" id="txtContainer"><label id="lbTxt"><input
+						id="cbTxt" type="checkbox" value=".txt" />.txt</label></li>
+
+				<li class="hide" id="pdfContainer"><label id="lbPdf"><input
+						id="cbPdf" type="checkbox" value=".pdf" />.pdf</label></li>
+
+				<li class="hide" id="htmlContainer"><label id="lbHtml"><input
+						id="cbHtml" type="checkbox" value=".html" />.html</label></li>
+
+				<li class="hide" id="javaContainer"><label id="lbJava"><input
+						id="cbJava" type="checkbox" value=".java" />.java</label></li>
+
+				<li class="hide" id="cContainer"><label id="lbC"><input
+						id="cbC" type="checkbox" value=".c" />.c</label></li>
+
+			</ul>
+
+			<ul class="date">
+
+				<li class="dateHeader"><a id="adate">Date</a></li>
+
+				<li class="hide" id="liFromDate"><label>From: </label> <input
+					type="text" class="fromDate" id="iptFromDate" /></li>
+
+				<li class="hide" id="liToDate"><label>To: </label> <input
+					type="text" class="toDate" id="iptToDate" /></li>
+
+			</ul>
+
+			<ul class="tags">
+
+				<li class="tagsHeader"><a id="aTags">Tags</a></li>
+
+				<li class="hide" id="liTag"><input id="iptTag" type="text"
+					placeholder="e.g. tag1,tag2,tag3" /></li>
+
+			</ul>
+
+			<ul class="accessGroup">
+
+				<li class="accessGroupHeader"><a id="aAccessGroup">Access
+						Group</a></li>
+
+				<li class="hide" id="liAccessGroup"><input id="iptAccessGroup"
+					type="text" placeholder="e.g. group1,group2,group3" /></li>
+
+			</ul>
+
+			<ul class="userName">
+
+				<li class="userNameHeader"><a id="aUserName">User Name</a></li>
+
+				<li class="hide" id="liUserName"><input id="iptUserName"
+					type="text" placeholder="e.g. user1,user2,user3" /></li>
+
+			</ul>
+
+		</div>
+	</div>
+
+
+	<!-- This part takes care of the adv search opitions in both active and non-active status -->
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fileTypeHeader").click(function() {
+				$(".fileType").toggleClass('active')
+			})
+		})
+		$(document).ready(function() {
+			$(".tagsHeader").click(function() {
+				$(".tags").toggleClass('active')
+			})
+		})
+		$(document).ready(function() {
+			$(".accessGroupHeader").click(function() {
+				$(".accessGroup").toggleClass('active')
+			})
+		})
+		$(document).ready(function() {
+			$(".userNameHeader").click(function() {
+				$(".userName").toggleClass('active')
+			})
+		})
+		$(document).ready(function() {
+			$(".dateHeader").click(function() {
+				$(".date").toggleClass('active')
+			})
+		})
+	</script>
+
+
+	<!-- This part takes care of gathering all the info, validate info & send to backend as json -->
+	<script type="text/javascript">
+		// action will be took after click the search button
+		$(function() {
+			$('.searchButton').on('click', function(e) {
+				// Get user's actual searching content
+				var searchContent = $('.searchBox input').val();
+
+				// Getting user input from each option
+				var fileTypeArr = [];
+				$('input[type=checkbox]').each(function() {
+					if ($(this).is(":checked")) {
+						fileTypeArr.push($(this).val());
+					}
+					;
+				});
+
+				var fromDate = $('#iptFromDate').val();
+				var toDate = $('#iptToDate').val();
+
+				var tagsArr = [];
+				$('.tag span').each(function() {
+					tagsArr.push($(this).text());
+				});
+				console.log(tagsArr)
+				var accessGroup = $('#iptAccessGroup').val();
+				var userName = $('#iptUserName').val();
+
+				// Pack all user input info into a form object
+				var obj = new FormData();
+				obj.append("body", searchContent);
+				obj.append("fileType", fileTypeArr);
+				obj.append("fromDate", fromDate);
+				obj.append("toDate", toDate);
+				obj.append("tags", tagsArr.join(" "));
+				//         obj.accessGroup = accessGroup;
+				obj.append("owner", userName);
+
+				// Do a post request
+				$.ajax({
+					url : "advSearch", // TODO need to be changed to the actual url that would be used for this post request
+					data : obj,
+					cache : false,
+					contentType : false,
+					processData : false,
+					method : 'POST',
+					success : function(myobj) {
+
+						// replace document
+						document.open();
+						document.write(myobj);
+						document.close();
+					},
+					error : function(err) {
+						alert(err);
+					}
+				});
+				e.preventDefault();
+			});
+		});
+	</script>
+
+	<!-- This part takes care of the date related functionalities -->
+	<script type="text/javascript">
+		var maxDate = new Date();
+		$(document).ready(function() {
+			$(".fromDate").datepicker({
+				showAnim : 'drop',
+				numberOfMonth : 1,
+				maxDate : maxDate,
+				dateFormat : 'yy-mm-dd',
+				onClose : function(selectedDate) {
+					$(".toDate").datepicker("option", "minDate", selectedDate);
+					$(".toDate").datepicker("show");
+				}
+			});
+		});
+		$(document).ready(
+				function() {
+					$(".toDate").datepicker(
+							{
+								showAnim : 'drop',
+								numberOfMonth : 1,
+								maxDate : maxDate,
+								dateFormat : 'yy-mm-dd',
+								onClose : function(selectedDate) {
+									$(".fromDate").datepicker("option",
+											"maxDate", selectedDate);
+								}
+							});
+				});
+		
+	</script>
+
+	<!-- This part takes care of autofill & tokeninput(tags) -->
+	<script type="text/javascript">
+
+		var mydata = [];
+
+		$.ajax({
+			url : "http://localhost:8080/tags/getalltags",
+			type: "get",
+			async: false,
+			success : function(retData) {
+				mydata = retData;
+			}
+		});
+		
+		$(function() {
+			$('#iptTag').tags({
+				unique : true
+			}).autofill({
+				data : mydata
+
+			// Make a get request to /tags/getalltags to get a list of tags
+
+			});
+		});
+
+	</script>
+
+</body>
+
+</html>

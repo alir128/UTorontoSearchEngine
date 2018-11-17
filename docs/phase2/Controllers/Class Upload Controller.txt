@@ -1,0 +1,13 @@
+Class name: Upload Controller
+
+Parent class: Main Controller
+
+Classname Subclasses:
+None
+
+Responsibilities:
+
+Allow files to be sent to model to be uploaded in the appropriate location in the db with permissions selected in the view sent to the model as params.
+
+Collaborators: 
+Upload Model

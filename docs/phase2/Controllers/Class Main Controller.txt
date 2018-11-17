@@ -1,0 +1,19 @@
+Class name: Main Controller
+
+Parent class: None
+
+Classname Subclasses (All controller classes):
+Search Controller
+Auth Controller
+Profile Controller
+Upload Controller
+
+Responsibilities:
+Handle requests made by the views and process them accordingly.
+
+Manage all search queries by making request to the appropriate model and send it back to the appropriate view.
+Provide search results based on whether the user is logged in or not. Forward all auth requests to the Auth controller.
+Communicate with the model to get info about user profiles and also to update and delete user profiles.
+Allow files to be sent to model to be uploaded in the appropriate location in the db with permissions selected in the view sent to the model.
+
+Collaborators: None

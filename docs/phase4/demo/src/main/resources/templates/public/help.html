@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{public/publicLayout.html}">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122960073-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-122960073-1');
+	</script>
+
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+
+	<section layout:fragment="content">
+			<div class="container">
+			    <h1>FAQ Page</h1>
+			  	<hr>
+			</div>
+			<div class="container ">
+			    <div class="panel-group" id="faqAccordion">
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: How I can upload files?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question0" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+			
+			                    <p>First, you need to create or login with your own account. After you logged in, you will be able to upload files through the “Upload” option on the navigation bar.
+			                        </p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: Why do I need to login?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question1" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+			
+			                    <p>If you logged in, you will have the ability to upload files, to see the files that are visible to your account other than just the public files.</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: Is it possible that I can upload some private files that are only visible by myself?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question2" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+			
+			                    <p>Yes. That is doable and also very useful. You just need to upload the file just like you normally do. The only difference is that you need to select the access group as only visible to yourself when you are at the uploading page.</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: I registered on the register page. Why am I still not able to login?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+								<p>Great! You are only one step away. After filling all the information on the register page, you will receive an verification email on your registered email address. You just need to go to check your registered email and go to the link attached in the verification email. Then you are good to go.</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question4">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: How can I join a group?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question4" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+								<p>Joining to a group is easy and useful. You just need to go to your profile page. You will see the option “Enroll to a group”. But you will notice that, for the course groups and some other groups, you may need some permission to enroll into.</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question5">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: Is it possible that I can create my own group?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question5" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+			                     <p>Yes. It is absolutely possible for you to create your own group. But you need to know that you are not allowed to create any official course groups.
+			                     </p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question6">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: What does tags do? Do I have to put some tags when I am uploading the file?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question6" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+			                     <p>Tags are very good feature that can help others find your file more quickly. Tags are nothing but the keywords which can summarize or describe your file ideally. However, adding tags when uploading files are totally optional. It is not mandatory but we highly recommend you to put some ideal tags. That will not only benefit yourself, but also all the users of our searching engine.</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default ">
+			            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question7">
+			                 <h4 class="panel-title">
+			                    <a href="#" class="ing">Q: How can groups feature help me when I am using the search engine?</a>
+			              </h4>
+			
+			            </div>
+			            <div id="question7" class="panel-collapse collapse" style="height: 0px;">
+			                <div class="panel-body">
+			                     <h5><span class="label label-primary">Answer</span></h5>
+								<p>The groups feature is super useful. With this awesome feature, you no longer need to worry about the privacy of the files you uploaded. A simply step to fill the option of access group when you are uploading the file will protect your files so that they will only be visible by your assigned groups.</p>
+			                </div>
+			            </div>
+			        </div>
+			        
+			    </div>
+			    <hr>
+			</div>
+			
+
+
+	</section>
+</body>
+</html>
+
